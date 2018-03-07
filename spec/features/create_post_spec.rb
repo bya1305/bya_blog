@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Create a post" do
+
   scenario "A user creates a new post" do
     visit root_path
     click_link "New Post"
@@ -23,7 +24,5 @@ RSpec.feature "Create a post" do
     expect(page).to have_content("Title can't be blank")
     expect(page).to have_content("Body can't be blank")
   end
-
-
 
 end

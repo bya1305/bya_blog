@@ -12,6 +12,18 @@ RSpec.feature "Create a post" do
     expect(page.current_path).to eq(posts_path)
   end
 
+  scenario "A user fails to create a new post" do
+    visit root_path
+    click_link "New Post"
+    fill_in "Title", with: ""
+    fill_in "Body", with: ""
+    click_button "Create Post"
+
+    expect(page).to have_content("Post was not created")
+    expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("Body can't be blank")
+  end
+
 
 
 end

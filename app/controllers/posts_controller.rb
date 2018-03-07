@@ -11,8 +11,9 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to posts_path
-      flash[:success] = "New Post Created Successfully!"
+      flash[:notice] = "New Post Created Successfully!"
     else
+      flash[:danger] = "Post was not created"
       render :new
     end
   end

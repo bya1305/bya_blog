@@ -1,7 +1,7 @@
 <%= link_to "New Post", new_post_path, class: "btn btn-default btn-lg", id: "new_post_button" %>
 
 <% if @posts.empty? %>
-  <h1 id="no-posts text-center">
+  <h1 id="no-posts" class="text-center">
     No blog posts have been created!
   </h1>
 <% else %>

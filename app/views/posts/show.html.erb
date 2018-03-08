@@ -3,3 +3,5 @@
 <h5><%= @post.created_at.strftime("%b %d %Y") %></h5>
 
 <p><%= @post.body %></p>
+
+<p><%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-primary btn-space" %></p>

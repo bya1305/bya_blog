@@ -23,6 +23,21 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "Post has been updated!"
+      redirect_to @post
+    else
+      flash.now[:danger] = "Post was not updated =("
+      render :edit
+    end
+  end
+
   protected
 
     def resource_not_found

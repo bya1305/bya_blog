@@ -38,6 +38,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "Post has been deleted!"
+      redirect_to posts_path
+    end
+  end
+
   protected
 
     def resource_not_found

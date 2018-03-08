@@ -23,6 +23,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  protected
+
+    def resource_not_found
+      message = "The post you are looking for could not be found"
+      flash[:alert] = message
+      redirect_to root_path
+    end
+
 
   private
 

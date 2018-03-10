@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.feature "Index of Blog Posts" do
 
   before do
-    @post1 = Post.create!(title: "Game of Thrones is the best show ever!", body: "I can go on and on about this show")
-    @post2 = Post.create!(title: "Can't stop coding", body: "I love creating projects with the things I've learned about coding!")
+    user = User.create!(email: "test@test.com", password: "password", password_confirmation: "password")
+    @post1 = Post.create!(title: "Game of Thrones is the best show ever!", body: "I can go on and on about this show", user: user)
+    @post2 = Post.create!(title: "Can't stop coding", body: "I love creating projects with the things I've learned about coding!", user: user)
   end
 
   scenario "An index of blog posts is shown" do

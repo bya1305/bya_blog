@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Delete a Post" do
   before do
-    @post = Post.create(title: "New Post Title", body: "This is the body")
+    user = User.create!(email: "test@test.com", password: "password", password_confirmation: "password")
+    login_as(user)
+    @post = Post.create(title: "New Post Title", body: "This is the body", user: user)
   end
 
   scenario "User deletes a post" do

@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.feature "Editing a Post" do
 
   before do
-    @post = Post.create(title: "Edit A Post Title", body: "This is the body of the post")
+    user = User.create!(email: "test@test.com", password: "password", password_confirmation: "password")
+    login_as(user)
+    @post = Post.create(title: "Edit A Post Title", body: "This is the body of the post", user: user)
   end
 
   scenario "User updates a post" do

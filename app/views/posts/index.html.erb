@@ -13,6 +13,9 @@
       <div class="post-body">
         <%= truncate(p.body, length: 500) %>
       </div>
+      <div class="author">
+        <small>Created by: <%= p.user.email %></small>
+      </div>
     </div>
   <% end %>
 <% end %>

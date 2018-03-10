@@ -9,17 +9,11 @@
   </head>
 
   <body>
-    <header role="banner">
-      <%= render 'shared/nav' %>
-    </header>
+    <%= render 'shared/nav' %>
 
     <div class="container">
 
-      <% flash.each do |key, message| %>
-        <div class="text-center alert alert-<%= key == 'notice'? 'success' : 'danger' %>">
-          <%= message %>
-        </div>
-      <% end %>
+    <%= render 'shared/notices' %>
 
       <%= yield %>
 

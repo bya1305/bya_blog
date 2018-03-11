@@ -25,20 +25,30 @@ class PostsController < ApplicationController
   end
 
   def edit
+    unless @post.user == current_user
+      flash[:alert] = "You can only edit your own posts"
+      redirect_to root_path
+    end
   end
 
   def update
-    if @post.update(post_params)
-      flash[:notice] = "Post has been updated!"
-      redirect_to @post
+    unless @post.user == current_user
+      flash[:alert] = "You can only edit your own posts"
+      redirect_to root_path
     else
-      flash.now[:danger] = "Post was not updated =("
-      render :edit
+      if @post.update(post_params)
+        flash[:notice] = "Post has been updated!"
+        redirect_to @post
+      else
+        flash.now[:danger] = "Post was not updated =("
+        render :edit
+      end
     end
   end
 
   def destroy
-    if @post.destroy
+    if current_user == @post.user
+      @post.destroy
       flash[:notice] = "Post has been deleted!"
       redirect_to posts_path
     end

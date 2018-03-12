@@ -11,7 +11,7 @@
 
 
 <div class="col-md-12">
-  <%= form_for [@post, @comment], html: { class: "form-horizontal", role: "form" } do |f| %>
+  <%= form_for [@post, @comment], remote: true, html: { class: "form-horizontal", role: "form" } do |f| %>
     <% if @comment.errors.any? %>
       <div class="panel panel-danger">
         <div class="panel-heading">
@@ -32,12 +32,12 @@
         <%= f.label :body, "New Comment" %>
       </div>
       <div class="col-md-10">
-        <%= f.text_area :body, rows: 10, class: "form-control", placeholder: "Your comment" %>
+        <%= f.text_area :body, rows: 10, class: "form-control", id: "comment-form-body", placeholder: "Your comment" %>
       </div>
     </div>
     <div class="form-group">
       <div>
-        <%= f.submit "Add Comment", class: "btn btn-primary btn-lg pull-right" %>
+        <%= f.submit "Add Comment", class: "btn btn-primary btn-lg pull-right", id: "comment-submit" %>
       </div>
     </div>
   <% end %>
@@ -50,6 +50,7 @@
 
   <div class="col-md-10">
     <% if @post.comments.any? %>
+    <div id="messages">
       <% persisted_comments(@comments).each do |comment| %>
         <div class="comment-body">
           <%= comment.body %>
@@ -59,6 +60,7 @@
         </div>
         <hr>
       <% end %>
+    </div>
     <% else %>
       There are no comments yet!
     <% end %>

@@ -14,7 +14,7 @@ RSpec.feature "Adding comments to posts" do
     fill_in "New Comment", with: "Such an awesome post!"
     click_button("Add Comment")
 
-    expect(page).to have_content("Comment has been created!")
+    
     expect(page).to have_content("Such an awesome post!")
     expect(current_path).to eq(post_path(@post))
   end
